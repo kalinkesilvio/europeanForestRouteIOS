@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="forestTrail_Prototype01" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IOJ-QI-dpF">
+                                <rect key="frame" x="69" y="231" width="276" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="G0v-rw-3by"/>
+                                    <constraint firstAttribute="height" constant="34" id="rKD-jv-0mv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="valueChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="bJM-VJ-wwu"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2Rn-q0-Ny4"/>
+                                </connections>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEE-ru-vhO">
+                                <rect key="frame" x="47" y="308" width="320" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="KZZ-Dw-ZzD"/>
+                                    <constraint firstAttribute="width" constant="320" id="VaC-6t-s6q"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="82z-WU-iFp"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ihM-G3-xyE"/>
+                                </connections>
+                            </pickerView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FwL-cO-xi8">
+                                <rect key="frame" x="0.0" y="454" width="414" height="388"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="388" id="Pzc-4m-3XI"/>
+                                    <constraint firstAttribute="width" constant="414" id="vRC-QC-LnH"/>
+                                </constraints>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ot-Cp-vj8">
+                                <rect key="frame" x="147.5" y="419.5" width="119.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FwL-cO-xi8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="1na-0S-Txf"/>
+                            <constraint firstItem="uEE-ru-vhO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="61t-q3-rDu"/>
+                            <constraint firstItem="7ot-Cp-vj8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="81k-5a-VL1"/>
+                            <constraint firstItem="7ot-Cp-vj8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-20" id="8FM-19-lus"/>
+                            <constraint firstItem="IOJ-QI-dpF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-200" id="DUS-Y5-xsO"/>
+                            <constraint firstItem="FwL-cO-xi8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rg7-uh-2eD"/>
+                            <constraint firstItem="IOJ-QI-dpF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gsi-rf-BA4"/>
+                            <constraint firstItem="uEE-ru-vhO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-90" id="vaf-Pu-iTK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dropDown" destination="uEE-ru-vhO" id="MOM-qc-r2b"/>
+                        <outlet property="label1" destination="7ot-Cp-vj8" id="uaY-Le-wA0"/>
+                        <outlet property="mapView" destination="FwL-cO-xi8" id="715-H6-J47"/>
+                        <outlet property="textBox" destination="IOJ-QI-dpF" id="eB7-Gm-jXg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="78.348214285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
