@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var dropDown: UIPickerView!
@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         textBoxPicker.delegate = self
         textBoxPicker.dataSource = self
         
+        mapView.delegate = self
+        
     }
     
     
@@ -40,6 +42,9 @@ class ViewController: UIViewController {
         }
         getStreckenAbschnittWithName(dropDown)
     }
+    
+    
+    
 }
 
 extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
@@ -60,6 +65,28 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
         textBox.text = model.streckenAbschnitte[row].name
         textBox.resignFirstResponder()
         
+    }
+    
+    class MyPointAnnotation: MKPointAnnotation {
+        var startingPoint = false
+        var endingPoint = false
+    }
+    
+    func showRouteOnMap(pickUpCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+        
+        /*let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickUpCoordinate, addressDictionary: nil))
+        
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil))
+        
+        request.requestsAlternateRoutes = true
+        request.transportType = .walking
+        
+        let directions = MKDirections(request: request)
+        
+        
+        
+        self.mapView.addOverlay()*/
     }
     
     func getStreckenAbschnittWithName(_ pickerView: UIPickerView) {
@@ -84,6 +111,10 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             mapView.addAnnotation(annotation)
+            
+            annotation.title = NSLocalizedString(contrPoints.name, comment: "")
+            let polyline = MKGeodesicPolyline(coordinates: &annotation.coordinate, count: mapView.annotations.count)
+            mapView.addOverlay(polyline)
         }
     }
 }
