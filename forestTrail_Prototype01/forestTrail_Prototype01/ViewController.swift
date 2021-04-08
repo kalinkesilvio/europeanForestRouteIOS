@@ -115,6 +115,30 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
             annotation.title = NSLocalizedString(contrPoints.name, comment: "")
             let polyline = MKGeodesicPolyline(coordinates: &annotation.coordinate, count: mapView.annotations.count)
             mapView.addOverlay(polyline)
+            
+            zoomToLocation(centerCoordinate: annotation.coordinate, radius: 1)
         }
+    }
+    
+    private func zoomToLocation(centerCoordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
+        // let diameter = radius * 2000
+        var cenCoor: CLLocationCoordinate2D = centerCoordinate
+        var longSumn: Double = 0
+        var latSumn: Double = 0
+        var count: Int = 0
+        
+        for coordinate in mapView.annotations {
+            longSumn += coordinate.coordinate.longitude
+            latSumn += coordinate.coordinate.latitude
+            count = count + 1
+        }
+        
+        cenCoor.longitude = longSumn / Double(count)
+        cenCoor.latitude = latSumn / Double(count)
+        
+        let mapCamera = MKMapCamera(lookingAtCenter: cenCoor, fromEyeCoordinate: cenCoor, eyeAltitude: 4000.0)
+        // self.mapView.setRegion(MKCoordinateRegion.init(center: annotation.coordinate, latitudinalMeters: diameter, longitudinalMeters: diameter), animated: true)
+        mapView.setCamera(mapCamera, animated: true)
+        
     }
 }
