@@ -44,6 +44,7 @@ class ControlPoint {
 class Model {
     
     var streckenAbschnitte: [StreckenAbschnitt] = []
+    var controlPoints: [ControlPoint] = []
     
     init() {
         self.fillWithStrecken()

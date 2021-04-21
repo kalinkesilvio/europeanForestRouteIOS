@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="78.348214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller Add Route-->
         <scene sceneID="XS1-X4-ZgS">
             <objects>
-                <viewController id="ByL-1B-y9y" sceneMemberID="viewController">
+                <viewController id="ByL-1B-y9y" customClass="ViewControllerAddRoute" customModule="forestTrail_Prototype01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZC6-Nf-B7W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,20 +175,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-L5-Ey0">
-                                <rect key="frame" x="122" y="576" width="171" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-L5-Ey0">
+                                <rect key="frame" x="121.5" y="571" width="171" height="30"/>
                                 <state key="normal" title="add controlpoint to route"/>
+                                <connections>
+                                    <action selector="addControlPoint:" destination="ByL-1B-y9y" eventType="touchUpInside" id="e4j-Q1-7KZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhu-LW-Sbz">
                                 <rect key="frame" x="174" y="706" width="66" height="30"/>
                                 <state key="normal" title="add route"/>
+                                <connections>
+                                    <action selector="addRoute:" destination="ByL-1B-y9y" eventType="touchUpInside" id="Vkr-67-uLC"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="added ControlPoints:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRi-ZS-bsk">
+                                <rect key="frame" x="126.5" y="610.5" width="161" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vQu-HZ-i5G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fhu-LW-Sbz" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="07o-hD-Cue"/>
+                            <constraint firstItem="RRi-ZS-bsk" firstAttribute="centerY" secondItem="ZC6-Nf-B7W" secondAttribute="centerY" constant="200" id="3rg-KL-JKR"/>
                             <constraint firstItem="mlO-mn-InI" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="9rS-cu-MbZ"/>
                             <constraint firstItem="sS7-vy-TfB" firstAttribute="centerY" secondItem="ZC6-Nf-B7W" secondAttribute="centerY" constant="-85" id="EiI-ho-ysh"/>
                             <constraint firstItem="YDQ-X0-P42" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="G29-Fg-JvO"/>
@@ -200,8 +212,11 @@
                             <constraint firstItem="3R3-nj-bvW" firstAttribute="centerY" secondItem="ZC6-Nf-B7W" secondAttribute="centerY" constant="-130" id="YQd-Lp-a6n"/>
                             <constraint firstItem="hup-ML-wFx" firstAttribute="centerY" secondItem="ZC6-Nf-B7W" secondAttribute="centerY" constant="70" id="ZYM-gI-wp6"/>
                             <constraint firstItem="hup-ML-wFx" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="ak0-Qo-bLR"/>
+                            <constraint firstItem="oTq-L5-Ey0" firstAttribute="centerY" secondItem="ZC6-Nf-B7W" secondAttribute="centerY" constant="165" id="b7j-CR-mrm"/>
                             <constraint firstItem="PP0-BG-m5d" firstAttribute="centerY" secondItem="ZC6-Nf-B7W" secondAttribute="centerY" constant="120" id="gma-Ys-MyJ"/>
+                            <constraint firstItem="RRi-ZS-bsk" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="hgz-Hs-Cav"/>
                             <constraint firstItem="H6m-Mw-Fuj" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="i5d-6L-XcI"/>
+                            <constraint firstItem="oTq-L5-Ey0" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="jdC-8v-frK"/>
                             <constraint firstItem="7hi-ru-Bpr" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="lhs-Fj-2iz"/>
                             <constraint firstItem="3R3-nj-bvW" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="mt0-PH-oCA"/>
                             <constraint firstItem="YDQ-X0-P42" firstAttribute="centerY" secondItem="ZC6-Nf-B7W" secondAttribute="centerY" constant="-300" id="owF-5w-YBR"/>
@@ -210,6 +225,19 @@
                             <constraint firstItem="sS7-vy-TfB" firstAttribute="centerX" secondItem="ZC6-Nf-B7W" secondAttribute="centerX" id="ycZ-Fs-XYo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addControlPointButton" destination="oTq-L5-Ey0" id="mFr-qQ-E9d"/>
+                        <outlet property="addRouteButton" destination="fhu-LW-Sbz" id="zHQ-bD-ayt"/>
+                        <outlet property="countrAbbrTextField" destination="PP0-BG-m5d" id="C87-if-FRy"/>
+                        <outlet property="displayContrP" destination="RRi-ZS-bsk" id="wsg-z1-Pwc"/>
+                        <outlet property="idControlPointTextField" destination="sS7-vy-TfB" id="kYr-aN-Upm"/>
+                        <outlet property="idRouteTextField" destination="7hi-ru-Bpr" id="jLM-FB-cUZ"/>
+                        <outlet property="latitudeTextField" destination="hup-ML-wFx" id="0XN-m0-Kxk"/>
+                        <outlet property="lengthTextField" destination="mlO-mn-InI" id="zTE-0m-GaE"/>
+                        <outlet property="longitudeTextField" destination="sFt-BN-zzk" id="aNF-Tf-iUP"/>
+                        <outlet property="nameControlPointTextField" destination="H6m-Mw-Fuj" id="cJZ-f4-Xhg"/>
+                        <outlet property="nameOfRouteTextField" destination="YDQ-X0-P42" id="H48-IC-Xuc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLQ-yS-FEV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
