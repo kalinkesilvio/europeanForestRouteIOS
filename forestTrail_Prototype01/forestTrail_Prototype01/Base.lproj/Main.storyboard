@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ApX-c7-7E3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -8,6 +8,70 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="DZc-r4-4Rx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hu-Cu-Ljh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="ApX-c7-7E3" customClass="MainViewController" customModule="forestTrail_Prototype01" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pLI-Rg-Hmp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atz-uI-SK1">
+                                <rect key="frame" x="183" y="483" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="kKB-Ob-aDV"/>
+                                    <constraint firstAttribute="height" constant="30" id="wJs-B1-YTE"/>
+                                </constraints>
+                                <state key="normal" title="Routes"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="getToRoutes" modalPresentationStyle="fullScreen" id="5sr-k5-5cM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeS-Pp-h7g">
+                                <rect key="frame" x="183" y="433" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="bJZ-s3-Rqw"/>
+                                    <constraint firstAttribute="height" constant="30" id="lck-v5-yyz"/>
+                                </constraints>
+                                <state key="normal" title="Gallery"/>
+                                <connections>
+                                    <segue destination="DL7-ot-cvI" kind="presentation" identifier="getToGallery" modalPresentationStyle="fullScreen" id="yZJ-qQ-Qfb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XSa-qV-J3d"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="atz-uI-SK1" firstAttribute="centerX" secondItem="pLI-Rg-Hmp" secondAttribute="centerX" id="JTt-KV-Izu"/>
+                            <constraint firstItem="FeS-Pp-h7g" firstAttribute="centerY" secondItem="pLI-Rg-Hmp" secondAttribute="centerY" id="Vq0-gM-BrR"/>
+                            <constraint firstItem="FeS-Pp-h7g" firstAttribute="centerX" secondItem="pLI-Rg-Hmp" secondAttribute="centerX" id="cIc-5e-7cR"/>
+                            <constraint firstItem="atz-uI-SK1" firstAttribute="centerY" secondItem="pLI-Rg-Hmp" secondAttribute="centerY" constant="50" id="eJa-mz-td4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Gallery" destination="FeS-Pp-h7g" id="8gQ-On-tet"/>
+                        <outlet property="Routes" destination="atz-uI-SK1" id="NNL-3P-7Yg"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-835" y="78"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KuG-Fs-e23">
+            <objects>
+                <viewController id="DL7-ot-cvI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="is9-BS-dGx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Lv0-Qm-cvb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISi-WZ-Fgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-41" y="-596"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
