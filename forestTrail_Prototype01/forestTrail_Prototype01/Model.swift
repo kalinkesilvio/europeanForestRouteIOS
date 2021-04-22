@@ -48,7 +48,7 @@ class Model {
     
     init() {
         self.fillWithStrecken()
-    }
+}
     
     
     func fillWithStrecken() {

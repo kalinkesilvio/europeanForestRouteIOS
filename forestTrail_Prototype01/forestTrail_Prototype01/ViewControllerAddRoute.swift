@@ -83,5 +83,61 @@ class ViewControllerAddRoute: UIViewController {
         
     }
     
+    private func jsonFileUpload(pathName: URL, newRoute: StreckenAbschnitt) {
+        do {
+            
+            var contrP: [ControlPointCodeable] = []
+            
+            for point in newRoute.controlPoints {
+                contrP.append(
+                    ControlPointCodeable(
+                        id: point.id, name: point.name,
+                        longitude: point.longitude, latitude: point.latitude,
+                        countryAbbr: point.countryAbbr)
+                )
+            }
+            
+            var route = RouteCodable(id: newRoute.id, name: newRoute.name, controlPoints: contrP, length: newRoute.length)
+            
+            
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            
+            let jsonData = try! encoder.encode(route)
+            
+        }
+    }
+    
+    struct RouteCodable: Codable {
+        var id: String
+        var name: String
+        var controlPoints: [ControlPointCodeable]
+        var length: Double
+        
+        enum Codingkeys: String, CodingKey {
+            case id = "idOfRoute"
+            case name = "nameOfRoute"
+            case controlPoints
+            case length = "lengthOfRoute"
+        }
+    }
+    
+    struct ControlPointCodeable: Codable {
+        var id: String
+        var name: String
+        var longitude: Double
+        var latitude: Double
+        var countryAbbr: String
+        
+        enum Codingkeys: String, CodingKey {
+            case id = "idOfControlPoint"
+            case name = "nameOfControlPoint"
+            case longitude
+            case latitude
+            case countryAbbr
+        }
+    }
+    
 
 }
