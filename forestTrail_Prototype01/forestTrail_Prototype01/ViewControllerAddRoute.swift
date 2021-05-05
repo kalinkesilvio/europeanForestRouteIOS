@@ -73,6 +73,11 @@ class ViewControllerAddRoute: UIViewController {
                 nameOfRouteTextField.text = ""
                 lengthTextField.text = ""
                 
+                // TODO: call jsonFileUpload Method to add the route 
+//                if try self.jsonFileUpload(newRoute: <#T##StreckenAbschnitt#>) {
+//                    <#code#>
+//                }
+                
                 print("route added: \(model.streckenAbschnitte.last!.name)")
             } else {
                 print("You have to add controlpoints")
@@ -83,9 +88,9 @@ class ViewControllerAddRoute: UIViewController {
         
     }
     
-    private func jsonFileUpload(pathName: URL, newRoute: StreckenAbschnitt) {
+    private func jsonFileUpload(newRoute: StreckenAbschnitt) {
         do {
-            
+             
             var contrP: [ControlPointCodeable] = []
             
             for point in newRoute.controlPoints {
@@ -97,14 +102,22 @@ class ViewControllerAddRoute: UIViewController {
                 )
             }
             
-            var route = RouteCodable(id: newRoute.id, name: newRoute.name, controlPoints: contrP, length: newRoute.length)
-            
-            
+            let route = RouteCodable(id: newRoute.id, name: newRoute.name, controlPoints: contrP, length: newRoute.length)
             
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
             
             let jsonData = try! encoder.encode(route)
+            
+            if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                                in: .userDomainMask).first {
+                let pathWithFilename = documentDirectory.appendingPathComponent("myJsonString.json")
+                do {
+                    try jsonData.write(to: pathWithFilename)
+                } catch {
+                    print("JSON Object was not written to file.")
+                }
+            }
             
         }
     }
