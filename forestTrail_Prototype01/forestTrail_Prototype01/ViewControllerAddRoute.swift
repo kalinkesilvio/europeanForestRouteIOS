@@ -23,6 +23,9 @@ class ViewControllerAddRoute: UIViewController {
     @IBOutlet weak var addRouteButton: UIButton!
     
     @IBOutlet weak var displayContrP: UILabel!
+
+    @IBOutlet var tapRec: UITapGestureRecognizer!
+    
     
     var model = Model()
     
@@ -64,18 +67,25 @@ class ViewControllerAddRoute: UIViewController {
     }
     
     @IBAction func addRoute(_ sender: Any) {
+        
         if (idRouteTextField.hasText && nameOfRouteTextField.hasText && lengthTextField.hasText) {
             
             if model.controlPoints.count > 0 {
                 model.streckenAbschnitte.append(StreckenAbschnitt(id: idRouteTextField.text!, name: nameOfRouteTextField.text!, controlPoints: model.controlPoints, length: (Double)(lengthTextField.text!) ?? 0.0))
-                
+    
                 idRouteTextField.text = ""
                 nameOfRouteTextField.text = ""
                 lengthTextField.text = ""
+                        
+                if model.streckenAbschnitte.isEmpty {
+                    self.displayContrP.text = "The Array is empty."
+                }
                 
+                self.jsonFileUpload(newRoute: model.streckenAbschnitte.last!)
+            
                 // TODO: call jsonFileUpload Method to add the route 
 //                if try self.jsonFileUpload(newRoute: <#T##StreckenAbschnitt#>) {
-//                    <#code#>
+//
 //                }
                 
                 print("route added: \(model.streckenAbschnitte.last!.name)")
@@ -111,7 +121,7 @@ class ViewControllerAddRoute: UIViewController {
             
             if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
                                                                 in: .userDomainMask).first {
-                let pathWithFilename = documentDirectory.appendingPathComponent("myJsonString.json")
+                let pathWithFilename = documentDirectory.appendingPathComponent("./routes.json")
                 do {
                     try jsonData.write(to: pathWithFilename)
                 } catch {
@@ -121,6 +131,11 @@ class ViewControllerAddRoute: UIViewController {
             
         }
     }
+    
+    @IBAction func tapRec(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     
     struct RouteCodable: Codable {
         var id: String
@@ -151,6 +166,5 @@ class ViewControllerAddRoute: UIViewController {
             case countryAbbr
         }
     }
-    
 
 }
