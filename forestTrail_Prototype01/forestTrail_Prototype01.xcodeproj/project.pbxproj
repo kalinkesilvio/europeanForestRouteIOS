@@ -15,6 +15,7 @@
 		C199FB9325F0C12700B56B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C199FB9125F0C12700B56B03 /* Main.storyboard */; };
 		C199FB9525F0C12900B56B03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C199FB9425F0C12900B56B03 /* Assets.xcassets */; };
 		C199FB9825F0C12900B56B03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C199FB9625F0C12900B56B03 /* LaunchScreen.storyboard */; };
+		F10BA5D0265645F000E36D51 /* ViewControllerAddRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BA5CF265645F000E36D51 /* ViewControllerAddRoute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C199FB9425F0C12900B56B03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C199FB9725F0C12900B56B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C199FB9925F0C12900B56B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F10BA5CF265645F000E36D51 /* ViewControllerAddRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAddRoute.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		C199FB8A25F0C12700B56B03 /* forestTrail_Prototype01 */ = {
 			isa = PBXGroup;
 			children = (
+				F10BA5CF265645F000E36D51 /* ViewControllerAddRoute.swift */,
 				C199FB8B25F0C12700B56B03 /* AppDelegate.swift */,
 				C199FB8D25F0C12700B56B03 /* SceneDelegate.swift */,
 				C199FB8F25F0C12700B56B03 /* ViewController.swift */,
@@ -145,6 +148,7 @@
 			files = (
 				C199FB9025F0C12700B56B03 /* ViewController.swift in Sources */,
 				C199FB8C25F0C12700B56B03 /* AppDelegate.swift in Sources */,
+				F10BA5D0265645F000E36D51 /* ViewControllerAddRoute.swift in Sources */,
 				C199FB8E25F0C12700B56B03 /* SceneDelegate.swift in Sources */,
 				C18CB30325F0C30200306B35 /* Model.swift in Sources */,
 				B123153326315A12003237D0 /* MainViewController.swift in Sources */,
