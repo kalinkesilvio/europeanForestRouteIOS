@@ -60,20 +60,47 @@
         <!--Upload-->
         <scene sceneID="KuG-Fs-e23">
             <objects>
-                <viewController id="DL7-ot-cvI" sceneMemberID="viewController">
+                <viewController id="DL7-ot-cvI" customClass="UploadViewController" customModule="forestTrail_Prototype01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="is9-BS-dGx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBE-oy-JKZ">
+                                <rect key="frame" x="20" y="64" width="374" height="654"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzr-xb-VrY">
+                                <rect key="frame" x="20" y="738" width="374" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="N04-Kp-OzW"/>
+                                </constraints>
+                                <state key="normal" title="Upload Photo"/>
+                                <connections>
+                                    <action selector="didTapButton" destination="DL7-ot-cvI" eventType="touchUpInside" id="U1a-iG-AeF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Lv0-Qm-cvb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lv0-Qm-cvb" firstAttribute="trailing" secondItem="yzr-xb-VrY" secondAttribute="trailing" constant="20" id="5lV-dw-VdQ"/>
+                            <constraint firstItem="Lv0-Qm-cvb" firstAttribute="trailing" secondItem="SBE-oy-JKZ" secondAttribute="trailing" constant="20" id="6Ki-Qi-cXI"/>
+                            <constraint firstItem="Lv0-Qm-cvb" firstAttribute="bottom" secondItem="yzr-xb-VrY" secondAttribute="bottom" constant="20" id="ELC-dk-26t"/>
+                            <constraint firstItem="yzr-xb-VrY" firstAttribute="top" secondItem="SBE-oy-JKZ" secondAttribute="bottom" constant="20" id="L24-tz-Vwx"/>
+                            <constraint firstItem="SBE-oy-JKZ" firstAttribute="top" secondItem="Lv0-Qm-cvb" secondAttribute="top" constant="20" id="L58-71-aCS"/>
+                            <constraint firstItem="SBE-oy-JKZ" firstAttribute="leading" secondItem="Lv0-Qm-cvb" secondAttribute="leading" constant="20" id="oPl-zc-KS2"/>
+                            <constraint firstItem="yzr-xb-VrY" firstAttribute="leading" secondItem="Lv0-Qm-cvb" secondAttribute="leading" constant="20" id="vEW-bK-SzF"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" id="dJu-NV-bh6">
                         <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="imageView" destination="SBE-oy-JKZ" id="RMY-xE-Y8W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISi-WZ-Fgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="-650"/>
+            <point key="canvasLocation" x="18.840579710144929" y="-650.22321428571422"/>
         </scene>
         <!--Map-->
         <scene sceneID="tne-QT-ifu">
