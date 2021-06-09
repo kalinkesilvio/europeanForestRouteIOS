@@ -10,14 +10,10 @@ import UIKit
 class UploadViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-
-
+    @IBAction func upload(_ sender: UIButton) {
+        let iu = uploadImage()()
+        present(iu, animated: true)
     }
-
     @IBAction func didTapButton() {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
@@ -26,7 +22,22 @@ class UploadViewController: UIViewController {
         present(vc, animated: true)
     }
     
+    var model = Model()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+
+
+    }
+    
+    
+    
+    
 }
+
+
 
 extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
