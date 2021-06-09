@@ -22,6 +22,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         textBox.inputView = textBoxPicker
         
         textBox.placeholder = "Select a route"
@@ -126,4 +127,5 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
             
         }
     }
+
 }

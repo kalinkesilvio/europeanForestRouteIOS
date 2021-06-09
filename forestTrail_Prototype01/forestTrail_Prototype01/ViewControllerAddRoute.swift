@@ -81,8 +81,10 @@ class ViewControllerAddRoute: UIViewController {
                     self.displayContrP.text = "The Array is empty."
                 }
                 
-                self.jsonFileUpload(newRoute: model.streckenAbschnitte.last!)
+                //self.jsonFileUpload(newRoute: model.streckenAbschnitte.last!)
             
+                self.networkUpload(url: URL(string: "localhost")!, newRoute: model.streckenAbschnitte.last!)
+                
                 // TODO: call jsonFileUpload Method to add the route 
 //                if try self.jsonFileUpload(newRoute: <#T##StreckenAbschnitt#>) {
 //
@@ -98,7 +100,7 @@ class ViewControllerAddRoute: UIViewController {
         
     }
     
-    private func jsonFileUpload(newRoute: StreckenAbschnitt) {
+    private func networkUpload(url: URL!, newRoute: StreckenAbschnitt) {
         do {
              
             var contrP: [ControlPointCodeable] = []
@@ -114,20 +116,36 @@ class ViewControllerAddRoute: UIViewController {
             
             let route = RouteCodable(id: newRoute.id, name: newRoute.name, controlPoints: contrP, length: newRoute.length)
             
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
+//            let encoder = JSONEncoder()
+//            encoder.outputFormatting = .prettyPrinted
+//
+//            let jsonData = try! encoder.encode(route)
+//
+            guard let requestURL = url else {
+                fatalError()
+            }
             
-            let jsonData = try! encoder.encode(route)
+            var request = URLRequest(url: requestURL)
+            request.httpMethod = "POST"
             
-            if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                in: .userDomainMask).first {
-                let pathWithFilename = documentDirectory.appendingPathComponent("./routes.json")
-                do {
-                    try jsonData.write(to: pathWithFilename)
-                } catch {
-                    print("JSON Object was not written to file.")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+            let postString = "id=\(route.id)&name=\(route.name)&controlPoints=\(route.controlPoints)&length=\(route.length)"
+            
+            request.httpBody = postString.data(using: String.Encoding.utf8)
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, encoding, error) in
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Response data string:\n \(dataString)")
                 }
             }
+        
+            task.resume()
             
         }
     }
