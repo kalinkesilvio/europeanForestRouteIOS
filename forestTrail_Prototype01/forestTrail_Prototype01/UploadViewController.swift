@@ -10,10 +10,7 @@ import UIKit
 class UploadViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
-    @IBAction func upload(_ sender: UIButton) {
-        let iu = uploadImage()()
-        present(iu, animated: true)
-    }
+    
     @IBAction func didTapButton() {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
@@ -21,8 +18,6 @@ class UploadViewController: UIViewController {
         vc.allowsEditing = true
         present(vc, animated: true)
     }
-    
-    var model = Model()
     
     override func viewDidLoad() {
         super.viewDidLoad()

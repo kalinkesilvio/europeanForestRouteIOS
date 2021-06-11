@@ -7,11 +7,6 @@
 
 import Foundation
 
-class Upload {
-    
-    var url: String = "localhost"
-    
-}
 
 class StreckenAbschnitt {
     
@@ -49,7 +44,6 @@ class ControlPoint {
 
 class Model {
     
-    var upload: Upload
     var streckenAbschnitte: [StreckenAbschnitt] = []
     var controlPoints: [ControlPoint] = []
     

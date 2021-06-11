@@ -67,10 +67,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBE-oy-JKZ">
                                 <rect key="frame" x="20" y="64" width="374" height="654"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="374" id="STA-Yh-P4J"/>
-                                    <constraint firstAttribute="height" constant="490" id="eLW-6h-oJb"/>
-                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzr-xb-VrY">
                                 <rect key="frame" x="20" y="738" width="374" height="55"/>
@@ -82,30 +78,16 @@
                                     <action selector="didTapButton" destination="DL7-ot-cvI" eventType="touchUpInside" id="U1a-iG-AeF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCW-lh-Dqx">
-                                <rect key="frame" x="20" y="743" width="374" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="5ff-FC-Ou0"/>
-                                    <constraint firstAttribute="width" constant="374" id="gPV-2g-Epi"/>
-                                </constraints>
-                                <state key="normal" title="Upload Photo"/>
-                                <connections>
-                                    <action selector="upload:" destination="DL7-ot-cvI" eventType="touchUpInside" id="2GB-EG-wrR"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lv0-Qm-cvb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dCW-lh-Dqx" firstAttribute="top" secondItem="SBE-oy-JKZ" secondAttribute="bottom" constant="25" id="4OD-i1-lN7"/>
                             <constraint firstItem="Lv0-Qm-cvb" firstAttribute="trailing" secondItem="yzr-xb-VrY" secondAttribute="trailing" constant="20" id="5lV-dw-VdQ"/>
                             <constraint firstItem="Lv0-Qm-cvb" firstAttribute="trailing" secondItem="SBE-oy-JKZ" secondAttribute="trailing" constant="20" id="6Ki-Qi-cXI"/>
                             <constraint firstItem="Lv0-Qm-cvb" firstAttribute="bottom" secondItem="yzr-xb-VrY" secondAttribute="bottom" constant="20" id="ELC-dk-26t"/>
                             <constraint firstItem="yzr-xb-VrY" firstAttribute="top" secondItem="SBE-oy-JKZ" secondAttribute="bottom" constant="20" id="L24-tz-Vwx"/>
                             <constraint firstItem="SBE-oy-JKZ" firstAttribute="top" secondItem="Lv0-Qm-cvb" secondAttribute="top" constant="20" id="L58-71-aCS"/>
-                            <constraint firstItem="dCW-lh-Dqx" firstAttribute="centerY" secondItem="is9-BS-dGx" secondAttribute="centerY" id="NUT-yl-8OL"/>
                             <constraint firstItem="SBE-oy-JKZ" firstAttribute="leading" secondItem="Lv0-Qm-cvb" secondAttribute="leading" constant="20" id="oPl-zc-KS2"/>
-                            <constraint firstItem="dCW-lh-Dqx" firstAttribute="centerX" secondItem="is9-BS-dGx" secondAttribute="centerX" id="qbk-lC-E6f"/>
                             <constraint firstItem="yzr-xb-VrY" firstAttribute="leading" secondItem="Lv0-Qm-cvb" secondAttribute="leading" constant="20" id="vEW-bK-SzF"/>
                         </constraints>
                     </view>
