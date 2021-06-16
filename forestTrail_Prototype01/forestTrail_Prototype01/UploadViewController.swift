@@ -32,6 +32,21 @@ class UploadViewController: UIViewController {
         
     }
     
+    func httpPost(stringData: Data) {
+        let url = URL(string: "localhost")
+        guard let requestURL = url else { fatalError() }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "POST"
+        
+        let postString = "yesyes";
+        
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        
+        
+        
+    }
         
 }
 
@@ -43,6 +58,7 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
         
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")]as? UIImage {
             imageView.image = image
+            print(image)
         }
         
         picker.dismiss(animated: true, completion: nil)
