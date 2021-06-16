@@ -28,8 +28,11 @@ class UploadViewController: UIViewController {
     }
     
     
+    @IBAction func uploadPic(_ sender: UIButton) {
+        
+    }
     
-    
+        
 }
 
 
