@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1146001267A49480057D049 /* route1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C1146000267A49480057D049 /* route1.gpx */; };
 		C188DF992673983600E3077B /* ViewControllerAddRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188DF982673983600E3077B /* ViewControllerAddRoute.swift */; };
 		C18CB30325F0C30200306B35 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18CB30225F0C30200306B35 /* Model.swift */; };
 		C199FB8C25F0C12700B56B03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FB8B25F0C12700B56B03 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C1146000267A49480057D049 /* route1.gpx */ = {isa = PBXFileReference; lastKnownFileType = file; name = route1.gpx; path = server/files/route1.gpx; sourceTree = SOURCE_ROOT; };
 		C188DF982673983600E3077B /* ViewControllerAddRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAddRoute.swift; sourceTree = "<group>"; };
 		C18CB30225F0C30200306B35 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C199FB8825F0C12700B56B03 /* forestTrail_Prototype01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = forestTrail_Prototype01.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 				C199FB9625F0C12900B56B03 /* LaunchScreen.storyboard */,
 				C199FB9925F0C12900B56B03 /* Info.plist */,
 				C18CB30225F0C30200306B35 /* Model.swift */,
+				C1146000267A49480057D049 /* route1.gpx */,
 			);
 			path = forestTrail_Prototype01;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 				C199FB9825F0C12900B56B03 /* LaunchScreen.storyboard in Resources */,
 				C199FB9525F0C12900B56B03 /* Assets.xcassets in Resources */,
 				C199FB9325F0C12700B56B03 /* Main.storyboard in Resources */,
+				C1146001267A49480057D049 /* route1.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

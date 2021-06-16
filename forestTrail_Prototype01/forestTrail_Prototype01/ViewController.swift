@@ -18,6 +18,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var addRouteButton: UIButton!
     
     var model = Model()
+    var drawRoute = DrawRoute()
     
     private let coordinateParser = CoordinateParser()
     
@@ -35,6 +36,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         textBoxPicker.dataSource = self
         
         mapView.delegate = self
+        
+        showRouteOnMap()
         
     }
     
@@ -79,30 +82,17 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
         var endingPoint = false
     }
     
-    func showRouteOnMap(routeCoordinates: [CLLocationCoordinate2D]) {
+    func showRouteOnMap() {
         
-        /*let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickUpCoordinate, addressDictionary: nil))
-        
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil))
-        
-        request.requestsAlternateRoutes = true
-        request.transportType = .walking
-        
-        let directions = MKDirections(request: request)
-        
-        
-        self.mapView.addOverlay()*/
-        
-        let routeCoordinates = self.parseCoordinates(fromGpxFile: "../server/files/t32133208_01 europaeische.gpx")
+        let routeCoordinates = drawRoute.parseCoordinates(fromGpxFile: "route1")
         
         if routeCoordinates != nil {
             let polyline = MKGeodesicPolyline(coordinates: routeCoordinates!, count: routeCoordinates!.count)
             self.mapView.addOverlay(polyline)
             
-            textBox.text = "route has been drawn"
+            label1.text = "route has been drawn"
         } else {
-            textBox.text = "couldn't find the gpx file"
+            label1.text = "couldn't find the gpx file"
         }
 
     }
@@ -142,22 +132,26 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
         }
     }
     
-    
-    func parseCoordinates(fromGpxFile filepath: String) -> [CLLocationCoordinate2D]? {
+    class DrawRoute {
         
-        guard let data = FileManager.default.contents(atPath: filepath) else { return nil }
+        var coordinateParser = CoordinateParser()
         
-        self.coordinateParser.prepare()
+        func parseCoordinates(fromGpxFile filepath: String) -> [CLLocationCoordinate2D]? {
+            
+            guard let data = FileManager.default.contents(atPath: filepath) else { return nil }
+            
+            self.coordinateParser.prepare()
+            
+            let parser = XMLParser(data: data)
+            parser.delegate = self.coordinateParser
+            
+            let success = parser.parse()
+            
+            guard success else { return nil }
+            
+            return coordinateParser.routeCoordinates
         
-        let parser = XMLParser(data: data)
-        parser.delegate = self.coordinateParser
-        
-        let success = parser.parse()
-        
-        guard success else { return nil }
-        
-        return coordinateParser.routeCoordinates
-    
+        }
     }
     
     class CoordinateParser: NSObject, XMLParserDelegate {
