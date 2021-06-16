@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Foundation
 
 class ViewController: UIViewController, MKMapViewDelegate {
 
@@ -17,6 +18,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var addRouteButton: UIButton!
     
     var model = Model()
+    
+    private let coordinateParser = CoordinateParser()
     
     var textBoxPicker = UIPickerView()
     
@@ -76,7 +79,7 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
         var endingPoint = false
     }
     
-    func showRouteOnMap(pickUpCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+    func showRouteOnMap(routeCoordinates: [CLLocationCoordinate2D]) {
         
         /*let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickUpCoordinate, addressDictionary: nil))
@@ -90,6 +93,18 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
         
         
         self.mapView.addOverlay()*/
+        
+        let routeCoordinates = self.parseCoordinates(fromGpxFile: "../server/files/t32133208_01 europaeische.gpx")
+        
+        if routeCoordinates != nil {
+            let polyline = MKGeodesicPolyline(coordinates: routeCoordinates!, count: routeCoordinates!.count)
+            self.mapView.addOverlay(polyline)
+            
+            textBox.text = "route has been drawn"
+        } else {
+            textBox.text = "couldn't find the gpx file"
+        }
+
     }
     
     func getStreckenAbschnittWithName(_ pickerView: UIPickerView) {
@@ -119,11 +134,49 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
             let polyline = MKGeodesicPolyline(coordinates: &annotation.coordinate, count: mapView.annotations.count)
             mapView.addOverlay(polyline)
             
-            let viewSpan = MKCoordinateSpan.init(latitudeDelta: 1, longitudeDelta: 1)
+            let viewSpan = MKCoordinateSpan.init(latitudeDelta: 0.1, longitudeDelta: 0.1)
             
             let region: MKCoordinateRegion = MKCoordinateRegion.init(center: annotation.coordinate, span: viewSpan)
             self.mapView.setRegion(region, animated: true)
             
+        }
+    }
+    
+    
+    func parseCoordinates(fromGpxFile filepath: String) -> [CLLocationCoordinate2D]? {
+        
+        guard let data = FileManager.default.contents(atPath: filepath) else { return nil }
+        
+        self.coordinateParser.prepare()
+        
+        let parser = XMLParser(data: data)
+        parser.delegate = self.coordinateParser
+        
+        let success = parser.parse()
+        
+        guard success else { return nil }
+        
+        return coordinateParser.routeCoordinates
+    
+    }
+    
+    class CoordinateParser: NSObject, XMLParserDelegate {
+        private(set) var routeCoordinates = [CLLocationCoordinate2D]()
+        
+        func prepare() {
+            routeCoordinates = [CLLocationCoordinate2D]()
+        }
+        
+        func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+            
+            guard elementName == "trkpt" || elementName == "wpt" else { return }
+            
+            guard let latString = attributeDict["lat"], let lonString = attributeDict["lon"] else { return }
+            guard let lat = Double(latString), let lon = Double(lonString) else { return }
+            guard let latDegrees = CLLocationDegrees(exactly: lat), let lonDegrees = CLLocationDegrees(exactly: lon) else { return }
+            
+            routeCoordinates.append(CLLocationCoordinate2D(latitude: latDegrees, longitude: lonDegrees))
+
         }
     }
 }
