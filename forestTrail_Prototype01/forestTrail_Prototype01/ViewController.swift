@@ -84,12 +84,19 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
     
     func showRouteOnMap() {
         
-        let routeCoordinates = drawRoute.parseCoordinates(fromGpxFile: "route1")
+        let routeCoordinates = drawRoute.parseCoordinates(fromGpxFile: "/Users/it170151/Desktop/europeanForestRouteIOS/forestTrail_Prototype01/server/files/route1.gpx")
         
         if routeCoordinates != nil {
             let polyline = MKGeodesicPolyline(coordinates: routeCoordinates!, count: routeCoordinates!.count)
-            self.mapView.addOverlay(polyline)
+            mapView.addOverlay(polyline)
             
+            let viewSpan = MKCoordinateSpan.init(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            
+            let centeredRegion = routeCoordinates!.count / 2
+            
+            let region: MKCoordinateRegion = MKCoordinateRegion.init(center: routeCoordinates![centeredRegion], span: viewSpan)
+            
+            mapView.setRegion(region, animated: true)
             label1.text = "route has been drawn"
         } else {
             label1.text = "couldn't find the gpx file"
@@ -127,7 +134,7 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
             let viewSpan = MKCoordinateSpan.init(latitudeDelta: 0.1, longitudeDelta: 0.1)
             
             let region: MKCoordinateRegion = MKCoordinateRegion.init(center: annotation.coordinate, span: viewSpan)
-            self.mapView.setRegion(region, animated: true)
+            mapView.setRegion(region, animated: true)
             
         }
     }
