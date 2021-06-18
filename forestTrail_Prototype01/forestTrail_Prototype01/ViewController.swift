@@ -87,7 +87,7 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
         let routeCoordinates = drawRoute.parseCoordinates(fromGpxFile: "/Users/it170151/Desktop/europeanForestRouteIOS/forestTrail_Prototype01/server/files/route1.gpx")
         
         if routeCoordinates != nil {
-            let polyline = MKGeodesicPolyline(coordinates: routeCoordinates!, count: routeCoordinates!.count)
+            let polyline = MKPolyline(coordinates: routeCoordinates!, count: routeCoordinates!.count)
             mapView.addOverlay(polyline)
             
             let viewSpan = MKCoordinateSpan.init(latitudeDelta: 0.1, longitudeDelta: 0.1)
@@ -102,6 +102,16 @@ extension ViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
             label1.text = "couldn't find the gpx file"
         }
 
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .red
+        renderer.lineWidth = 2.0
+        renderer.alpha = 1.0
+        
+        return renderer
     }
     
     func getStreckenAbschnittWithName(_ pickerView: UIPickerView) {
